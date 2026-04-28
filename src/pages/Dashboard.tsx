@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import { Brain, TrendingUp, ArrowRight, Activity, BookOpen, Target } from "lucide-react";
+import { Brain, TrendingUp, ArrowRight, Activity, BookOpen, Target, Database } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { getCurrentUser } from "@/lib/auth";
-import { SAMPLE_STOCKS } from "@/lib/expertSystem";
+import { SAMPLE_STOCKS, KNOWLEDGE_BASE, SECTORS } from "@/lib/expertSystem";
 
 const Dashboard = () => {
   const user = getCurrentUser();
@@ -28,10 +28,10 @@ const Dashboard = () => {
       {/* Stats */}
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {[
-          { label: "Saham Tercatat", value: SAMPLE_STOCKS.length, icon: TrendingUp, accent: "text-primary" },
-          { label: "Sinyal Bullish", value: bullish, icon: Activity, accent: "text-success" },
-          { label: "Oversold (RSI<35)", value: oversold, icon: Target, accent: "text-warning" },
-          { label: "Dividen ≥ 5%", value: highYield, icon: BookOpen, accent: "text-accent" },
+          { label: "Saham IDX", value: SAMPLE_STOCKS.length, icon: TrendingUp, accent: "text-primary" },
+          { label: "Sektor Tercakup", value: SECTORS.length, icon: Database, accent: "text-accent" },
+          { label: "Rule Knowledge Base", value: KNOWLEDGE_BASE.length, icon: BookOpen, accent: "text-success" },
+          { label: "Sinyal Bullish", value: bullish, icon: Activity, accent: "text-warning" },
         ].map((s) => (
           <Card key={s.label} className="glass border-border/60 p-5">
             <div className="flex items-center justify-between mb-2">
