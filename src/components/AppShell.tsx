@@ -1,5 +1,5 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Sparkles, LogOut, LayoutDashboard, TrendingUp, Brain } from "lucide-react";
+import { Sparkles, LogOut, LayoutDashboard, TrendingUp, Brain, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { getCurrentUser, logout } from "@/lib/auth";
 
@@ -12,6 +12,7 @@ export const AppShell = ({ children }: { children: React.ReactNode }) => {
     { to: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
     { to: "/analyze", label: "Analisa", icon: Brain },
     { to: "/stocks", label: "Saham IDX", icon: TrendingUp },
+    { to: "/knowledge", label: "Knowledge Base", icon: BookOpen },
   ];
 
   const handleLogout = () => {
