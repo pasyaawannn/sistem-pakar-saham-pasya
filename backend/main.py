@@ -9,7 +9,7 @@ from auth import (
     hash_password, verify_password, create_access_token, get_current_user_id,
 )
 from stocks_data import SAMPLE_STOCKS
-from expert_engine import InferenceInput, run_expert_system
+from expert_engine import InferenceInput, run_expert_system, KNOWLEDGE_BASE
 from technical_bridge import compute_technical
 
 app = FastAPI(title="SahamPakar API", version="1.0.0")
@@ -85,6 +85,12 @@ def technical(ticker: str, _: int = Depends(get_current_user_id)):
 @app.post("/expert/analyze")
 def analyze(body: InferenceInput, _: int = Depends(get_current_user_id)):
     return run_expert_system(body)
+
+
+@app.get("/expert/rules")
+def list_rules(_: int = Depends(get_current_user_id)):
+    """Expose seluruh knowledge base (33 rule)."""
+    return KNOWLEDGE_BASE
 
 
 @app.get("/")
